@@ -1,9 +1,8 @@
+import PageRoutes from "./routes";
 
 function App() {
   return (
-    <div>
-      Hello World!
-    </div>
+    <PageRoutes />
   );
 }
 
