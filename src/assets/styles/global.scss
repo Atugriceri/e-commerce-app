@@ -1,0 +1,23 @@
+@import 'reset.scss';
+@import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap");
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Figtree", sans-serif;
+  height: 100%;
+  font-size: 13px !important;
+  overflow: auto;
+  overscroll-behavior: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#root {
+  height: 100%;
+}
