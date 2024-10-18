@@ -1,5 +1,5 @@
-$primary: #5591f5;
-$secondary: #6d77f6;
+$primary: #32FF6A;
+$secondary: #6CE6DD;
 $warning: #ff930a;
 $danger: #d1105a;
 $info: #93caf6;
@@ -13,6 +13,10 @@ $info-dark: darken($info, 10%);
 $success-dark: darken($success, 10%);
 
 :root {
+
+  --header-height: 56px;
+
+  /* Main Color Palette */
   --primary: #{$primary};
   --secondary: #{$secondary};
   --warning: #{$warning};
@@ -20,6 +24,7 @@ $success-dark: darken($success, 10%);
   --info: #{$info};
   --success: #{$success};
 
+  /* Darken Color for hover */
   --primary-dark: #{$primary-dark};
   --secondary-dark: #{$secondary-dark};
   --warning-dark: #{$warning-dark};
@@ -27,6 +32,7 @@ $success-dark: darken($success, 10%);
   --info-dark: #{$info-dark};
   --success-dark: #{$success-dark};
 
+  /* Gray Scale */
   --dark: #212529;
   --gray-700: #343a40;
   --gray-600: #495057;

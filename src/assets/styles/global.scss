@@ -1,4 +1,4 @@
-@import 'reset.scss';
+@import 'reset';
 @import "variables";
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap");
 
@@ -12,6 +12,7 @@ body {
   font-size: 13px !important;
   overflow: auto;
   overscroll-behavior: none;
+  margin: 0;
 }
 
 a {
