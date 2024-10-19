@@ -1,12 +1,33 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, lazy, Suspense, memo } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductDetail, getProductComments } from '../../slice';
-import Spinner from '../../../../components/spinner';
 import Button from '../../../../components/button';
-import Comments from './subComponents/comments';
-import ErrorPopup from '../../../../components/error-popup';
 import './styles.scss';
+import Spinner from '../../../../components/spinner';
+import ErrorPopup from '../../../../components/error-popup';
+
+const Comments = lazy(() => import('./subComponents/comments'));
+
+const ProductImage = memo(({ src, alt, loaded, setLoaded }) => (
+  <div className="product-detail__image-container">
+    {!loaded && <div className="product-detail__image-placeholder" />}
+    <img
+      src={src}
+      alt={alt}
+      className={`product-detail__image ${loaded ? 'loaded' : 'loading'}`}
+      onLoad={() => setLoaded(true)}
+    />
+  </div>
+));
+
+ProductImage.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  setLoaded: PropTypes.func.isRequired,
+};
 
 function ProductDetail() {
   const { id } = useParams();
@@ -56,7 +77,9 @@ function ProductDetail() {
   };
 
   if (productStatus === 'loading' || commentsLoading) {
-    return <Spinner />;
+    return (
+      <Spinner />
+    );
   }
 
   if (productError) {
@@ -75,15 +98,12 @@ function ProductDetail() {
     <div className="product-detail">
       {product && (
         <div className="product-detail__body">
-          <div className="product-detail__image-container">
-            {!loaded && <div className="product-detail__image-placeholder" />}
-            <img
-              src={product.image}
-              alt={product.title}
-              className={`product-detail__image ${loaded ? 'loaded' : 'loading'}`}
-              onLoad={() => setLoaded(true)}
-            />
-          </div>
+          <ProductImage
+            src={product.image}
+            alt={product.title}
+            loaded={loaded}
+            setLoaded={setLoaded}
+          />
           <div className="product-detail__info">
             <h2 className="product-detail__title">{product.title}</h2>
             <div className="product-detail__meta">
@@ -98,7 +118,7 @@ function ProductDetail() {
             <p className="product-detail__description">{product.body}</p>
             <div className="product-detail__footer">
               {showError && (
-                <ErrorPopup message="Something went wrong" onClose={handleCloseError} />
+              <ErrorPopup message="Something went wrong" onClose={handleCloseError} />
               )}
               <Button variant="primary" className="w-100" onClick={handleBuyClick}>
                 Buy
@@ -109,10 +129,12 @@ function ProductDetail() {
       )}
 
       <div ref={commentsRef} className="product-detail__comments">
-        <Comments comments={comments} />
+        <Suspense fallback={<Spinner />}>
+          <Comments comments={comments} />
+        </Suspense>
       </div>
     </div>
   );
 }
 
-export default ProductDetail;
+export default memo(ProductDetail);
