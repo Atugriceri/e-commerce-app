@@ -1,0 +1,21 @@
+.link {
+	text-decoration: none;
+	color: var(--dark);
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	&:hover {
+		text-decoration: underline !important;
+		color: var(--primary);
+	}
+
+	&:focus {
+		outline: none;
+		text-decoration: underline !important;
+		color: var(--primary);
+	}
+}
