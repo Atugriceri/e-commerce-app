@@ -9,7 +9,7 @@ const ProductDetail = lazy(() => import('../subComponents/productDetail'));
 function ProductRoutes() {
   return (
     <Routes>
-      <Route path="/products" element={<ProductsLayout />}>
+      <Route path="" element={<ProductsLayout />}>
         <Route
           index
           element={(
