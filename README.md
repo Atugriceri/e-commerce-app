@@ -1,7 +1,5 @@
 # E-Commerce App
 
-This is a simple e-commerce application built using React, Redux Toolkit, and React Router for educational purposes. It demonstrates basic product listing and detailed views.
-
 ## Getting Started
 
 ### Prerequisites
