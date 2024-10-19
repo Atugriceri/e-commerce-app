@@ -12,7 +12,7 @@ Before running this project, you need to have Node.js and npm (or Yarn) installe
 
 Follow these steps to get your development environment set up:
 
-1. Clone the repository**
+1. Clone the repository
 
    ```bash
    git clone https://github.com/Atugriceri/e-commerce-app.git
