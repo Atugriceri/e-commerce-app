@@ -16,7 +16,7 @@ Follow these steps to get your development environment set up:
    git clone https://github.com/Atugriceri/e-commerce-app.git
    cd e-commerce-app
 	 ```
-2. **Install dependencies
+2. Install dependencies
    ```bash
    npm i
 	 ```
