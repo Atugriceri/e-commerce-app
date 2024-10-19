@@ -14,8 +14,10 @@ function ErrorFallback({ error, resetErrorBoundary }) {
     <div className="error-boundary">
       <h2>Something went wrong!</h2>
       <p>An unexpected error occurred. Please try again later.</p>
-      <Button onClick={() => window.location.replace('/products')}>Return to Product List</Button>
-      <Button onClick={resetErrorBoundary}>Try Again</Button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <Button onClick={() => window.location.replace('/products')}>Return to Product List</Button>
+        <Button onClick={resetErrorBoundary}>Try Again</Button>
+      </div>
     </div>
   );
 }
